@@ -1,2 +1,2 @@
 .aws-sam/
-./services/auth/node_modules/
+services\auth\node_modules
