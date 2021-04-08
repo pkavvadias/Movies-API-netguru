@@ -7,7 +7,7 @@ services:
       context: ./services/auth/ 
       dockerfile: Dockerfile
     ports:
-      - published: ${APP_PORT:-3000}
+      - published: ${AUTH_APP_PORT:-3000}
         target: 3000
     volumes:
       - ./services/auth/:/app
@@ -21,7 +21,7 @@ services:
       context: ./services/database
       dockerfile: Dockerfile
     ports: 
-    - 5431:5432
+    - ${POSTGRES_PORT}:5432
     volumes:
     - ./services/database/data:/var/lib/postgresql/data
     environment:
