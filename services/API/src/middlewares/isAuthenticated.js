@@ -1,6 +1,5 @@
 'use strict'
 
-//const jwt = require('express-jwt');
 const jwt = require('jsonwebtoken')
 var env = require('../utils/environment');
 
@@ -13,6 +12,7 @@ function authCheck(req,res,next){
                 return res.status(401).json({error:'Invalid token'});
             } else {
                 req.user = decoded;
+                console.log(req.user);
                 next();
             }
         });
