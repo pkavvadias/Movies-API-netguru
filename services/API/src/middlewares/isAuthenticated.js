@@ -9,7 +9,7 @@ function authCheck(req,res,next){
         jwt.verify(token, env.JWT_SECRET,{issuer:"https://www.netguru.com/",subject:"123"}, function(err, decoded) {
             if (err) {
                 console.log(err)
-                return res.status(401).json({error:'Invalid token'});
+                return res.status(401).json({ status: 'fail', error: 'Invalid token' });
             } else {
                 req.user = decoded;
                 console.log(req.user);
@@ -17,7 +17,7 @@ function authCheck(req,res,next){
             }
         });
     } else {
-        return res.status(401).json({error:'No token found'});
+        return res.status(401).json({ status: 'fail', error: 'No token found' });
     }
 }
 
