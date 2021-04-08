@@ -1,18 +1,18 @@
 'use strict'
 
 const jwt = require('jsonwebtoken')
-var env = require('../utils/environment');
+const env = require('../utils/environment');
 
-function authCheck(req,res,next){
-    var token = req.headers.authorization.split(" ")[1];
-    if (token) {
-        jwt.verify(token, env.JWT_SECRET,{issuer:"https://www.netguru.com/",subject:"123"}, function(err, decoded) {
+const authCheck = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    if (authHeader) {
+        const token = authHeader.split(" ")[1];
+        jwt.verify(token, env.JWT_SECRET, { issuer: "https://www.netguru.com/", subject: "123" }, function (err, decoded) {
             if (err) {
-                console.log(err)
+                console.log(err.name)
                 return res.status(401).json({ status: 'fail', error: 'Invalid token' });
             } else {
                 req.user = decoded;
-                console.log(req.user);
                 next();
             }
         });

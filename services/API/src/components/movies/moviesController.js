@@ -1,7 +1,10 @@
-function getMovies(){
+const getMovies = () => {
 
 }
+const addMovie = () => {
 
+}
 module.exports = {
-    getMovies:getMovies
+    getMovies: getMovies,
+    addMovie: addMovie
 }
