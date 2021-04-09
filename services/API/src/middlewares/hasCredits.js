@@ -10,7 +10,7 @@ const hasCredits = async (req, res, next) => {
         next();
     }
     else {
-        const entries = await db.movies.checkNumber(req.user.userId);
+        const entries = await db.movies.checkNumber(contextObj);
         entries.count < 5 ? next() : res.status(401).json({ status: 'failure', message: 'Not enough credits' });
     }
 }

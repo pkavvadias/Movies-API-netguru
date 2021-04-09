@@ -1,8 +1,10 @@
 'use strict'
+
 const promise = require('bluebird');
 const pgPromise = require('pg-promise');
 const MoviesDAL = require('../components/movies/moviesDAL');
-const dbUrl = 'postgres://' + process.env.POSTGRES_USER + ':' + process.env.POSTGRES_PASSWORD + '@localhost:' + process.env.POSTGRES_PORT + '/' + process.env.POSTGRES_DB;
+var env = require('../utils/environment');
+const dbUrl = 'postgres://' + env.POSTGRES_USER + ':' + env.POSTGRES_PASSWORD + '@localhost:' + env.POSTGRES_PORT + '/' + env.POSTGRES_DB;
 
 const initOptions = {
 

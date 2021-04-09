@@ -1,7 +1,9 @@
 'use strict'
-const db = require('../config/db-config').db;
 
-const getMovies = (req, res, next) => {
+const db = require('../../config/db-config').db;
+const OMDB = require('../../utils/OMDB');
+
+const getMovies = async (req, res, next) => {
     const contextObj = {
         user: req.user,
     };
@@ -21,8 +23,25 @@ const getMovies = (req, res, next) => {
     }
 
 }
-const addMovie = () => {
-
+const addMovie = async (req,res,next) => {
+    const contextObj = {
+        user: req.user,
+        movie: await OMDB.movieInfo(req.body.title)
+    };
+    try {
+        const result = await db.movies.addMovie(contextObj);
+        return res.status(200)
+            .json({
+                status: 'success',
+                data: result,
+            });
+    } catch (error) {
+        return res.status(400)
+            .json({
+                status: 'failure',
+                data: "Error occured, please try again"
+            });
+    }
 }
 module.exports = {
     getMovies: getMovies,
