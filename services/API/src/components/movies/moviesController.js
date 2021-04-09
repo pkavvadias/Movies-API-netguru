@@ -23,12 +23,12 @@ const getMovies = async (req, res, next) => {
     }
 
 }
-const addMovie = async (req,res,next) => {
+const addMovie = async (req,res,next) => {    
+    try {
     const contextObj = {
         user: req.user,
         movie: await OMDB.movieInfo(req.body.title)
     };
-    try {
         const result = await db.movies.addMovie(contextObj);
         return res.status(200)
             .json({
