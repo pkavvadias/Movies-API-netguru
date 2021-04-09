@@ -8,10 +8,10 @@ const movieInfo = async (title) => {
     const info = await axios.get(url + title);
     if (info.data.Response === 'True') {
         const movie = {
-            Title: info.data.Title,
-            Released: info.data.Released,
-            Genre: info.data.Genre,
-            Director: info.data.Director
+            title: info.data.Title,
+            released: info.data.Released,
+            genre: info.data.Genre,
+            director: info.data.Director
         }
         return movie;
     }

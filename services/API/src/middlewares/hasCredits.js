@@ -6,7 +6,7 @@ const hasCredits = async (req, res, next) => {
     const contextObj = {
         user: req.user,
     };
-    if (contextObj.role === 'premium') {
+    if (contextObj.user.role === 'premium') {
         next();
     }
     else {

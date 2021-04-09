@@ -15,7 +15,9 @@ class MoviesDAL {
     }
 
     async addMovie(contextObj) {
-
+        const insertMovieQueryText = 'INSERT INTO movies(userid,date_added,title,released,genre,director) VALUES($1,NOW(),$2,$3,$4,$5)';
+        const inserMovieQueryValues = [contextObj.user.userId,contextObj.movie.title,contextObj.movie.released,contextObj.movie.genre,contextObj.movie.director];
+        return await this.db.none(insertMovieQueryText,inserMovieQueryValues);
     }
 }
 module.exports = MoviesDAL;

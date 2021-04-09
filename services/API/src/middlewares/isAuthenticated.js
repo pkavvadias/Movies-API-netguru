@@ -7,7 +7,7 @@ const authCheck = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (authHeader) {
         const token = authHeader.split(" ")[1];
-        jwt.verify(token, env.JWT_SECRET, { issuer: "https://www.netguru.com/", subject: "123" }, function (err, decoded) {
+        jwt.verify(token, env.JWT_SECRET, { issuer: "https://www.netguru.com/"}, function (err, decoded) {
             if (err) {
                 return res.status(401)
                     .json({

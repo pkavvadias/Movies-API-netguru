@@ -31,17 +31,17 @@ const addMovie = async (req,res,next) => {
         user: req.user,
         movie: await OMDB.movieInfo(req.body.title)
     };
-        const result = await db.movies.addMovie(contextObj);
+        await db.movies.addMovie(contextObj);
         return res.status(200)
             .json({
                 status: 'success',
-                data: result,
+                data: contextObj.movie,
             });
     } catch (error) {
         return res.status(400)
             .json({
                 status: 'failure',
-                data: "Error occured, please try again"
+                data: "Error occured. Please check you typed movie name correctly and try again"
             });
     }
 }
