@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
-    "test": "nyc mocha ./src/test"
+    "test": "nyc mocha ./src/test",
+    "start-gendoc": "node swagger.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -24,6 +25,8 @@
     "mocha": "^8.3.2",
     "nyc": "^15.1.0",
     "sinon": "^10.0.0",
-    "supertest": "^6.1.3"
+    "supertest": "^6.1.3",
+    "swagger-autogen": "^2.7.9",
+    "swagger-ui-express": "^4.1.6"
   }
 }

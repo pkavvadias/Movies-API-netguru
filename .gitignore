@@ -2,3 +2,4 @@
 services/database/data/*
 **/node_modules
 **/.nyc_output
+services/API/swagger_output.json

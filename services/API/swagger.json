@@ -1,0 +1,111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Movie API",
+    "description": "A simple Movie API for the Netguru Node.js recruitment task "
+  },
+  "host": "localhost:3001",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Movies",
+      "description": "Movie management"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "Key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "The token should be passed in request's Authorization header with format Authorization: Bearer token"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/movies": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Movies": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Godfather"
+        },
+        "released": {
+          "type": "string",
+          "example": "15 Nov 1991"
+        },
+        "genre": {
+          "type": "string",
+          "example": "Comedy, Drama, Romance"
+        },
+        "director": {
+          "type": "string",
+          "example": "Lal, Siddique"
+        }
+      }
+    }
+  }
+}
