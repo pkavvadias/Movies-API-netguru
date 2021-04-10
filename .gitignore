@@ -1,3 +1,4 @@
 .aws-sam/
 services/database/data/*
 **/node_modules
+**/.nyc_output

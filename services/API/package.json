@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
-    "test": "mocha ./src/test"
+    "test": "nyc mocha ./src/test"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "mocha": "^8.3.2",
+    "nyc": "^15.1.0",
     "sinon": "^10.0.0",
     "supertest": "^6.1.3"
   }
