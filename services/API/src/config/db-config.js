@@ -10,7 +10,8 @@ const initOptions = {
 
     // Use a custom promise library, instead of the default ES6 Promise:
     promiseLib: promise,
-
+    // Required in order to mock database during testing
+    noLocking : true, 
     // Extending the database protocol
     // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
     extend(obj, dc) {

@@ -6,7 +6,6 @@ const mocks = require('./mocks')
 const hasCredits = require('../middlewares/hasCredits').hasCredits;
 const database = require('../components/movies/moviesDAL');
 const stub = sinon.stub(database.prototype, 'checkNumber');
-const chai = require("chai");
 
 describe('Credit check', function () {    
     it('Should allow basic user with less than 5 movies to add movie',async function () {
