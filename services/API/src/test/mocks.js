@@ -46,6 +46,40 @@ const reqPremium = mockRequest({ headers: { authorization: bearer_token_premium 
 const reqInvalidToken = mockRequest({ headers: { authorization: 'testest' } });
 const reqEmpty = mockRequest();
 
+const OMDBmock_correct = {
+  Title: "Godfather",
+  Year: "1991",
+  Rated: "Not Rated",
+  Released: "15 Nov 1991",
+  Runtime: "150 min",
+  Genre: "Comedy, Drama, Romance",
+  Director: "Lal, Siddique",
+  Writer: "Lal (screenplay,  story & dialogue), Siddique",
+  Actors: "N.N. Pillai, Mukesh, Kanaka, Philomina",
+  Plot: "Two youngsters from rival clans fall in love.",
+  Language: "Malayalam",
+  Country: "India",
+  Awards: "2 wins.",
+  Poster: "https://m.media-amazon.com/images/M/MV5BZTkyYzc5MGEtYTBiYS00ZmYyLThlZWUtOWY3ZWE4ZDhlN2MzXkEyXkFqcGdeQXVyMjM0ODk5MDU@._V1_SX300.jpg",
+  Ratings: [{ "Source": "Internet Movie Database", "Value": "8.6/10" }],
+  Metascore: "N/A",
+  imdbRating: "8.6",
+  imdbVotes: "3,022",
+  imdbID: "tt0353496",
+  Type: "movie",
+  DVD: "N/A",
+  BoxOffice: "N/A",
+  Production: "N/A",
+  Website: "N/A",
+  Response: "True"
+}
+const godfather_object = {
+  title: "Godfather",
+  released: "15 Nov 1991",
+  genre: "Comedy, Drama, Romance",
+  director: "Lal, Siddique"
+}
+
 module.exports = {
   token_basic: bearer_token_basic,
   token_premium: bearer_token_premium,
@@ -54,5 +88,7 @@ module.exports = {
   reqBasic: reqBasic,
   reqPremium: reqPremium,
   reqInvalidToken: reqInvalidToken,
-  reqEmpty: reqEmpty
+  reqEmpty: reqEmpty,
+  OMDBmock_correct: OMDBmock_correct,
+  godfather_object: godfather_object
 }

@@ -1,6 +1,6 @@
 'use strict'
 
-const axios = require('axios')
+const axios = require('axios');
 var env = require('../utils/environment');
 
 const url = 'http://www.omdbapi.com/?apikey=' + env.OMDB_KEY + '&t=';
