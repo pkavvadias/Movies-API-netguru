@@ -2,7 +2,6 @@
 'use strict'
 
 const sinon = require("sinon");
-const expect = require("chai").expect;
 const data = require('../components/movies/moviesDAL');
 const mocks = require('./mocks');
 const controller = require('../components/movies/moviesController');
