@@ -3,7 +3,7 @@
 const sinon = require("sinon");
 const db = require('../config/db-config').db;
 
-describe('Database check',function(){
+describe('Database test',function(){
     it('Should get number of movies added by a user durring curent calendar month',async function(){
         db.movies.checkNumber.restore(); //Restoring function's original state, as was stubed earlier
         const contextObj = {user:{userId:123}};

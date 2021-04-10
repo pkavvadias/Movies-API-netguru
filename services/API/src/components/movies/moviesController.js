@@ -7,8 +7,6 @@ const getMovies = async (req, res, next) => {
     const contextObj = {
         user: req.user,
     };
-    console.log(req.user.userId)
-    console.log(contextObj.user.userId)
     try {
         const result = await db.movies.getMovies(contextObj);
         return res.status(200)

@@ -2,10 +2,10 @@
 
 const expect = require("chai").expect;
 const sinon = require('sinon');
-const mocks = require('./mocks')
+const mocks = require('./mocks');
 const authCheck = require('../middlewares/isAuthenticated').authCheck;
 
-describe('User authentication',function(){
+describe('User authentication test',function(){
 
     it('Should authenticate Basic user', function() {
        const nextSpy = sinon.spy();

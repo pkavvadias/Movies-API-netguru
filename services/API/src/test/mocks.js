@@ -79,6 +79,10 @@ const godfather_object = {
   genre: "Comedy, Drama, Romance",
   director: "Lal, Siddique"
 }
+const OMDBmock_false = {
+  Response: "False",
+  Error: "Movie not found!"
+}
 
 module.exports = {
   token_basic: bearer_token_basic,
@@ -90,5 +94,6 @@ module.exports = {
   reqInvalidToken: reqInvalidToken,
   reqEmpty: reqEmpty,
   OMDBmock_correct: OMDBmock_correct,
-  godfather_object: godfather_object
+  godfather_object: godfather_object,
+  OMDBmock_false: OMDBmock_false
 }

@@ -4,8 +4,8 @@ const expect = require("chai").expect;
 const sinon = require('sinon');
 const mocks = require('./mocks')
 const hasCredits = require('../middlewares/hasCredits').hasCredits;
-const database = require('../components/movies/moviesDAL');
-const stub = sinon.stub(database.prototype, 'checkNumber');
+const data = require('../components/movies/moviesDAL');
+const stub = sinon.stub(data.prototype, 'checkNumber');
 
 describe('Credit check', function () {    
     it('Should allow basic user with less than 5 movies to add movie',async function () {
@@ -39,4 +39,4 @@ describe('Credit check', function () {
         await hasCredits(mocks.reqPremium, mocks.res, nextSpy);
         expect(nextSpy.called).to.be.true;
     });
-})
+});
