@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken')
 const env = require('../utils/environment');
 
 const authCheck = (req, res, next) => {
-    const authHeader = req.headers.authorization;
-    if (authHeader) {
-        const token = authHeader.split(" ")[1];
+    const header = req.headers;
+    if (header.authorization) {
+        const token = header.authorization.split(" ")[1];
         jwt.verify(token, env.JWT_SECRET, { issuer: "https://www.netguru.com/"}, function (err, decoded) {
             if (err) {
                 return res.status(401)

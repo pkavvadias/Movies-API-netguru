@@ -25,12 +25,22 @@ const getMovies = async (req, res, next) => {
     }
 
 }
-const addMovie = async (req,res,next) => {    
-    try {
+const addMovie = async (req, res, next) => {
+
+    const movie = await OMDB.movieInfo(req.body.title);
+    if (movie === false) {
+        return res.status(400)
+            .json({
+                status: 'failure',
+                data: "Movie not found"
+            });
+    }
+
     const contextObj = {
         user: req.user,
-        movie: await OMDB.movieInfo(req.body.title)
+        movie: movie
     };
+    try {
         await db.movies.addMovie(contextObj);
         return res.status(200)
             .json({
@@ -45,6 +55,7 @@ const addMovie = async (req,res,next) => {
             });
     }
 }
+
 module.exports = {
     getMovies: getMovies,
     addMovie: addMovie
