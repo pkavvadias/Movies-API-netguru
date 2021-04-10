@@ -14,3 +14,4 @@ describe('OMDB function test', function () {
        
     })
 })
+stub.restore();
