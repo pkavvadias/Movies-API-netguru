@@ -12,7 +12,7 @@ const movieInfo = async (title) => {
             released: info.data.Released,
             genre: info.data.Genre,
             director: info.data.Director
-        }
+        };
         return movie;
     }
     else return false;

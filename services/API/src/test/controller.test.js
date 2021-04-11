@@ -11,7 +11,7 @@ const next = sinon.stub();
 const OMDB = require('../utils/OMDB');
 const OMDBstub = sinon.stub(OMDB,'movieInfo');
 
-describe('Controller tests',function(){
+describe('Controller tests',async function(){
     it('Returns success message when getting movies', async function(){
         await controller.getMovies(mocks.reqBasic,mocks.res,next);
         sinon.assert.calledWith(mocks.res.status, 200);

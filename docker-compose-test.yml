@@ -1,0 +1,39 @@
+version: "3.2"
+services:
+  stage_database:
+    container_name: postgres_stage
+    restart: always
+    build:
+      context: ./services/database
+      dockerfile: Dockerfile
+    ports: 
+    - ${POSTGRES_PORT_STAGE}:5432
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_STAGE}
+      POSTGRES_USER: ${POSTGRES_USER_STAGE}
+      POSTGRES_DB: ${POSTGRES_DB_STAGE}
+
+  api:
+    container_name: Movie_API
+    build:
+      context: ./services/API
+      dockerfile: Dockerfile_test
+      args:
+        - JWT_SECRET=${JWT_SECRET}
+        - POSTGRES_PASSWORD_STAGE=${POSTGRES_PASSWORD_STAGE}
+        - POSTGRES_USER_STAGE=${POSTGRES_USER_STAGE}
+        - POSTGRES_DB_STAGE=${POSTGRES_DB_STAGE}
+        - POSTGRES_PORT_STAGE=${POSTGRES_PORT_STAGE}
+        - POSTGRES_URL_STAGE=${POSTGRES_URL_STAGE}
+        - OMDB_KEY=${OMDB_KEY}
+        - API_APP_PORT=${API_APP_PORT}
+    ports:
+    - ${API_APP_PORT:-3001}:3001
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_STAGE}
+      POSTGRES_USER: ${POSTGRES_USER_STAGE}
+      POSTGRES_DB: ${POSTGRES_DB_STAGE}
+      POSTGRES_PORT: ${POSTGRES_PORT_STAGE}
+      OMDB_KEY: ${OMDB_KEY}
+      API_APP_PORT: ${API_APP_PORT}
