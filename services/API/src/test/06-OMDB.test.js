@@ -12,7 +12,6 @@ describe('OMDB function test', function () {
 
     it('Should return movie object', async function () {
         stub.resolves(mocks.OMDBmock_correct);
-        //OMDB.movieInfo.restore();
         expect(await OMDB.movieInfo('Godfather')).to.deep.equal(mocks.godfather_object);
 
     });
