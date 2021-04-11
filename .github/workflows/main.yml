@@ -1,0 +1,55 @@
+# Netguru Movies API CI
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Netguru job
+jobs:
+  # Build job
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
+      # Start staging database
+      - name: Start staging database
+        run: docker-compose -f docker-compose-test.yml up stage_database
+        
+      # Test api
+      - name: Start staging database
+        run: docker-compose -f docker-compose-test.yml up --exit-code-from api --build api
+        
+      # Build final and push
+      - name: Build and push
+        uses: docker/bake-action@master
+        with: 
+          file: docker-compose.yml
+          push: true
+          tags: pkavadia/movie-api:latest
+
+      # Image digest
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
