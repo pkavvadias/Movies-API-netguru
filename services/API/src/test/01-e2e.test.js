@@ -10,12 +10,14 @@ const api = request(app);
 
 describe('E2E tests',function(){
     it('POST /movies for basic user', async function(){
+        const stub = sinon.stub(data.prototype, 'checkNumber').resolves({count:2});  // Simulate a basic user with 2 movies in database
         const response = await api.post('/movies').set('Authorization',mocks.token_basic).send('title=Harry Potter');
+        stub.restore();
         expect(response.status).to.eql(200);
     });
 
     it('POST /movies for basic user having no credits left ', async function(){
-        const stub = sinon.stub(data.prototype, 'checkNumber').returns(4);
+        const stub = sinon.stub(data.prototype, 'checkNumber').returns({count:5}); // Simulate a basic user with 5 movies in database
         const response = await api.post('/movies').set('Authorization',mocks.token_basic).send('title=Harry Potter');
         stub.restore();
         expect(response.status).to.eql(401);

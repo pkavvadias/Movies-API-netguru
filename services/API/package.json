@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
-    "test": "nyc mocha ./src/test",
+    "test": "nyc mocha --sort ./src/test",
     "start-gendoc": "node swagger.js"
   },
   "dependencies": {
