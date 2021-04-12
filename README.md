@@ -1,3 +1,4 @@
+![CI/CD workflow](https://github.com/pkavvadias/Movies-API-netguru/actions/workflows/main.yml/badge.svg)
 # Node.js recruitment task
 
 We'd like you to build a simple Movie API. It should provide two endpoints:
