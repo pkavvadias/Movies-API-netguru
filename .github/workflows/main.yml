@@ -1,13 +1,11 @@
 # Netguru Movies API CI
 
-name: CI/CD Pipeline
+name: Test & Build Pipeline
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
