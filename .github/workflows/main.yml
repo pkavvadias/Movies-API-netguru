@@ -52,11 +52,10 @@ jobs:
     steps:
       # Build final and push
        - name: Build and push
-         uses: docker/bake-action@master
+         uses: docker/bake-action@v1.3.0
          with: 
-           file: docker-compose.yml
+           files: docker-compose.yml
            push: true
-           tags: pkavadia/movie-api:latest
 
       # Image digest
        - name: Image digest
