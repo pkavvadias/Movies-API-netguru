@@ -185,7 +185,7 @@ Dockerhub repo: https://hub.docker.com/r/pkavadia/movie-api
 - pg-promise
 - Mocha
 - Chai
-- Sinnon
+- Sinon
 - Supertest
 - Swagger
 
