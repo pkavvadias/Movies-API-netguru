@@ -55,6 +55,7 @@ jobs:
          uses: docker/bake-action@v1.3.0
          with: 
            push: true
+           targets: auth,database,api
 
       # Image digest
        - name: Image digest
