@@ -57,7 +57,7 @@ jobs:
            context: ./
            file: ./docker-compose.yml
            push: true
-           tag: pkavadia/movie-api:latest
+           tags: pkavadia/movie-api:latest
 
       # Image digest
        - name: Image digest
