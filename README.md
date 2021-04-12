@@ -23,7 +23,68 @@ The simple Movie API provides two endpoints:
 ```
 Authorization: Bearer <token>
 ```
+## Example POST 
 
+To add a movie call service using for example `curl`. We assume
+that the service is running on port `3001`. Service adds movie to database
+and responds with success code and movie details.
+
+Request
+
+```
+curl --location --request POST '0.0.0.0:3001/movies' \
+--header 'Authorization: Bearer <token> \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'title=Harry Potter'
+
+```
+
+Response
+
+```
+{
+    "status": "success",
+    "data": {
+        "title": "Harry Potter and the Deathly Hallows: Part 2",
+        "released": "15 Jul 2011",
+        "genre": "Adventure, Drama, Fantasy, Mystery",
+        "director": "David Yates"
+    }
+}
+```
+
+## Example GET 
+
+To get user movies call service using for example `curl`. We assume
+that the service is running on port `3001`. Service gets movies on
+database from the current user, along with id and user id.
+
+Request
+
+```
+curl --location --request GET '0.0.0.0:3001/movies' \
+--header 'Authorization: Bearer <token>'
+
+```
+
+Response
+
+```
+{
+    "status": "success",
+    "data": [
+        {
+            "id": 66,
+            "userid": 434,
+            "date_added": "2021-04-12T00:00:00.000Z",
+            "title": "Harry Potter and the Deathly Hallows: Part 2",
+            "released": "2011-07-15T00:00:00.000Z",
+            "genre": "Adventure, Drama, Fantasy, Mystery",
+            "director": "David Yates"
+        }
+    ]
+}
+```
 # Authorization service
 
 To authorize users please use our simple auth service based on JWT tokens.
