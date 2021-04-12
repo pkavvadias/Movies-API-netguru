@@ -23,14 +23,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2            
-            
-      - name: Login to DockerHub
-        uses: docker/login-action@v1 
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          
+      - uses: actions/checkout@v2         
+                      
       # Start staging database
       - name: Start staging database
         run: docker-compose -f docker-compose-test.yml up -d stage_database
@@ -48,6 +42,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}  
+          
       # Build final and push
     - name: Build and push
       uses: docker/build-push-action@v2
