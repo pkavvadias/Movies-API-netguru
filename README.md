@@ -146,15 +146,14 @@ At the build stage, unit tests as well as integration tests are executed
 ⚠️ Parameters are as declared on .env file at the root dir. If you wish to change them please edit this file
     
 Test results can be seen below   
-```    
+  
 ![tests](https://github.com/pkavvadias/Movies-API-netguru/blob/master/assets/test_results.PNG)  
-```  
+
   
-Code coverage is 98.99%  
-  
-```     
+Code coverage is 98.99%    
+    
 ![code coverage](https://github.com/pkavvadias/Movies-API-netguru/blob/master/assets/code_coverage.PNG)
-```
+
 
 ## Run production environment
 1. Clone this repository  
@@ -181,11 +180,16 @@ Dockerhub repo: https://hub.docker.com/r/pkavadia/movie-api
 ## Tools used
 
 - PostgreSQL
+- Node.js
 - Express Framework
 - pg-promise
+- Bluebird
+- Axios
+- JSON Web Token
 - Mocha
 - Chai
 - Sinon
 - Supertest
 - Swagger
+- Dotenv
 
