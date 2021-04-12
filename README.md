@@ -172,10 +172,10 @@ Three containers are created:
 ⚠️ Parameters are as declared on .env file at the root dir. If you wish to change them please edit this file  
 
 ## CI/CD
-Projet uses Github Actions for Continuous Integration and Deployment    
-After each pull request the Pull Request pipeline is executed testing the code  
-On direct pushes to master or when a PR is merged the Test & Deploy pipeline is executed  
-This pipeline, after running the tests deploys container to dockerhub  
+Projet uses `Github Actions` for Continuous Integration and Deployment    
+After each pull request the `Pull Request` pipeline is executed testing the code  
+On direct pushes to master or when a PR is merged the `Test & Deploy` pipeline is executed  
+This pipeline, after running the tests deploys container to `Docker Hub` 
 Dockerhub repo: https://hub.docker.com/r/pkavadia/movie-api 
 
 ## Tools used
