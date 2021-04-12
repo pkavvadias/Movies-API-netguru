@@ -1,27 +1,24 @@
 ![CI/CD workflow](https://github.com/pkavvadias/Movies-API-netguru/actions/workflows/main.yml/badge.svg)
-# Node.js recruitment task
+# Movie API
 
-We'd like you to build a simple Movie API. It should provide two endpoints:
+The simple Movie API provides two endpoints:
 
 1. `POST /movies`
    1. Allows creating a movie object based on movie title passed in the request body
-   2. Bade on title additional movie details should be fetched from
-      https://omdbapi.com/ and saved to the database. Data we would like you to
-      fetch from OMDb API:
+   2. Based on title, additional movie details are feched from OMDb API:
    ```
      Title: string
      Released: date
      Genre: string
-     Directory: string
+     Director: string
    ```
    3. Only authorized users can create a movie.
    4. `Basic` users are restricted to create a 5 movies per month (calendar
       month). `Premium` users have no limits.
 1. `GET /movies`
-   1. Should fetch a list of all movies created by an authorized user.
+   1. Fetches a list of all movies created by an authorized user.
 
-⚠️ Don't forget to verify user's authorization token before processing the
-request. The token should be passed in request's `Authorization` header.
+⚠️ Token should be passed in request's `Authorization` header to be authorized.
 
 ```
 Authorization: Bearer <token>
