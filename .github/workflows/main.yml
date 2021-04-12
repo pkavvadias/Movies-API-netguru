@@ -40,12 +40,13 @@ jobs:
         run: docker-compose -f docker-compose-test.yml up -d stage_database
         
       # Test api
-      - name: Start staging database
+      - name: Test API
         run: docker-compose -f docker-compose-test.yml up --exit-code-from api --build api
         
   Deploy:
   
     name: Deploy API to Dockerhub
+    needs: Test # Execute only after tests passed
     runs-on: ubuntu-latest
     
     steps:
