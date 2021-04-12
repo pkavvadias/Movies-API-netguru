@@ -1,6 +1,6 @@
 # Netguru Movies API CI
 
-name: Test & Build Pipeline
+name: Test & Deploy Pipeline
 
 # Controls when the action will run. 
 on:
