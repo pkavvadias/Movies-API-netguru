@@ -129,10 +129,10 @@ Response
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMywibmFtZSI6IkJhc2ljIFRob21hcyIsInJvbGUiOiJiYXNpYyIsImlhdCI6MTYxODIxODU1NiwiZXhwIjoxNjE4MjIwMzU2LCJpc3MiOiJodHRwczovL3d3dy5uZXRndXJ1LmNvbS8iLCJzdWIiOiIxMjMifQ.aHn18NijgXhvEqYxHXmvnqj2ONNB82KWcCGK_IX2Mqw"
 }
 ```
-## Run 
+# Run 
 To build and run locally you need to have `docker` and `docker-compose` installed  
 
-# Run tests locally 
+## Run tests locally 
 1. Clone this repository   
 2. Run from root dir  
 
@@ -143,12 +143,20 @@ docker-compose -f docker-compose-test.yml build --no-cache api
 That way, a stage database having the same schema with the production database is set  
 At the build stage, unit tests as well as integration tests are executed  
 
-⚠️ Parameters are as declared on .env file at the root dir. If you wish to change them please edit this file   
+⚠️ Parameters are as declared on .env file at the root dir. If you wish to change them please edit this file
+    
+Test results can be seen below   
+```    
 ![tests](https://github.com/pkavvadias/Movies-API-netguru/blob/master/assets/test_results.PNG)  
-Code coverage is 98.99%     
+```  
+  
+Code coverage is 98.99%  
+  
+```     
 ![code coverage](https://github.com/pkavvadias/Movies-API-netguru/blob/master/assets/code_coverage.PNG)
+```
 
-# Run production environment
+## Run production environment
 1. Clone this repository  
 2. Run from root dir  
 
@@ -163,24 +171,21 @@ Three containers are created:
 
 ⚠️ Parameters are as declared on .env file at the root dir. If you wish to change them please edit this file  
 
-## Rules
+## CI/CD
+Projet uses Github Actions for Continuous Integration and Deployment    
+After each pull request the Pull Request pipeline is executed testing the code  
+On direct pushes to master or when a PR is merged the Test & Deploy pipeline is executed  
+This pipeline, after running the tests deploys container to dockerhub  
+Dockerhub repo: https://hub.docker.com/r/pkavadia/movie-api 
 
-- Database and framework choice are on your side.
-- Your API has to be dockerized. Create `Dockerfile` and `docker-compose` and document the process of running it locally.
-- Provided solution should consist of two microservices.
-  - `Authentication Service` - provided by us to auth users
-  - `Movies Service` - created by you to handle movies data
-- Test your code.
-- Provide documentation of your API.
-- Application should be pushed to the public git repository and should have a
-  working CI/CD pipeline that runs the tests. For example you can use GitHub
-  Actions or CircleCI. Create a sample PR to show us the working CI/CD pipeline.
+## Tools used
 
-## What will be evaluated?
+- PostgreSQL
+- Express Framework
+- pg-promise
+- Mocha
+- Chai
+- Sinnon
+- Supertest
+- Swagger
 
-- Task completeness
-- Architecture
-- Code quality
-- Tests quality
-- Database design
-- Technology stack
