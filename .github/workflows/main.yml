@@ -12,7 +12,8 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+id: dotenv
+uses: ./.github/actions/dotenv-action
 # Netguru job
 jobs:
   # Build job
@@ -50,13 +51,24 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    
       # Build final and push
        - name: Build and push
-         uses: docker/bake-action@v1.3.0
-         with:
-           files: ./docker-compose.yml
+         uses: docker/build-push-action@v2
+         env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          API_APP_PORT: ${{ secrets.API_APP_PORT }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+          OMDB_KEY: ${{ secrets.OMDB_KEY }}
+         with: 
+           context: ./services/API
+           file: ./Dockerfile
            push: true
-           targets: auth,database,api
+           tags: pkavadia/movie-api:latest
 
       # Image digest
        - name: Image digest
