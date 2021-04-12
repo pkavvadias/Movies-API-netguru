@@ -28,7 +28,7 @@ Documentation about the API can also be found on `./assets/API Documentation.pdf
 
 To add a movie call service using for example `curl`. We assume
 that the service is running on port `3001`. Service adds movie to database
-and responds with success code and movie details.
+and responds with success code and movie details.  
 
 Request
 
@@ -58,7 +58,7 @@ Response
 
 To get user movies call service using for example `curl`. We assume
 that the service is running on port `3001`. Service gets movies on
-database from the current user, along with id and user id.
+database from the current user, along with id and user id.  
 
 Request
 
@@ -88,10 +88,10 @@ Response
 ```
 # Authorization service
 
-To authorize users use the auth service based on JWT tokens.
+To authorize users use the auth service based on JWT tokens.  
 ## Users
 
-The auth service defines two user accounts that you should use
+The auth service defines two user accounts that you should use  
 
 1. `Basic` user
 
@@ -109,7 +109,7 @@ password: 'GBLtTyq3E_UNjFnpo9m6'
 ## Example request
 
 To authorize user call the auth service using for example `curl`. We assume
-that the auth service is running on port `3000`.
+that the auth service is running on port `3000`.  
 
 Request
 
@@ -130,23 +130,39 @@ Response
 }
 ```
 ## Run 
-To build and run locally you need to have `docker` and `docker-compose` installed
+To build and run locally you need to have `docker` and `docker-compose` installed  
 
-
-# Test locally 
-1. Clone this repository 
-2. Run from root dir
+# Run tests locally 
+1. Clone this repository   
+2. Run from root dir  
 
 ```
-docker-compose -f docker-compose-test.yml up -d stage_database
-docker-compose -f docker-compose-test.yml build --no-cache api
+docker-compose -f docker-compose-test.yml up -d stage_database  
+docker-compose -f docker-compose-test.yml build --no-cache api  
 ```
-That way, a stage database having the same schema with the production database is set
-At the build stage, unit tests as well as integration tests are executed
-Code coverage is 98.99% 
+That way, a stage database having the same schema with the production database is set  
+At the build stage, unit tests as well as integration tests are executed  
 
-![tests](https://github.com/pkavvadias/Movies-API-netguru/blob/master/assets/test_results.PNG)
+⚠️ Parameters are as declared on .env file at the root dir. If you wish to change them please edit this file   
+![tests](https://github.com/pkavvadias/Movies-API-netguru/blob/master/assets/test_results.PNG)  
+Code coverage is 98.99%     
 ![code coverage](https://github.com/pkavvadias/Movies-API-netguru/blob/master/assets/code_coverage.PNG)
+
+# Run production environment
+1. Clone this repository  
+2. Run from root dir  
+
+```
+docker-compose build --no-cache  
+docker-compose up -d  
+```
+Three containers are created:  
+1. The authorization service
+2. PostgreSQL database
+3. The Movie API service
+
+⚠️ Parameters are as declared on .env file at the root dir. If you wish to change them please edit this file  
+
 ## Rules
 
 - Database and framework choice are on your side.
