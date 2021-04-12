@@ -13,7 +13,7 @@ jobs:
   # Build job
   Test:
     # The type of runner that the job will run on
-    name: Test API
+    name: Test PR API
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
