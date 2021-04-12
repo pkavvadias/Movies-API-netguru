@@ -53,7 +53,8 @@ jobs:
       # Build final and push
        - name: Build and push
          uses: docker/bake-action@v1.3.0
-         with: 
+         with:
+           files: ./docker-compose.yml
            push: true
            targets: auth,database,api
 
