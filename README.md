@@ -23,6 +23,7 @@ The simple Movie API provides two endpoints:
 ```
 Authorization: Bearer <token>
 ```
+Documentation about the API can also be found on `./assets/API Documentation.pdf`
 ## Example POST 
 
 To add a movie call service using for example `curl`. We assume
@@ -87,41 +88,7 @@ Response
 ```
 # Authorization service
 
-To authorize users please use our simple auth service based on JWT tokens.
-Auth service code is located under `./src` directory
-
-## Prerequisites
-
-You need to have `docker` and `docker-compose` installed on your computer to run the service
-
-## Run locally
-
-1. Clone this repository
-1. Run from root dir
-
-```
-JWT_SECRET=secret docker-compose up -d
-```
-
-By default the auth service will start on port `3000` but you can override
-the default value by setting the `APP_PORT` env var
-
-```
-APP_PORT=8081 JWT_SECRET=secret docker-compose up -d
-```
-
-To stop the authorization service run
-
-```
-docker-compose down
-```
-
-## JWT Secret
-
-To generate tokens in auth service you need to provide env variable
-`JWT_SECRET`. It should be a string value. You should use the same secret in
-the API you're building to verify the JWT tokens.
-
+To authorize users use the auth service based on JWT tokens.
 ## Users
 
 The auth service defines two user accounts that you should use
@@ -139,33 +106,15 @@ The auth service defines two user accounts that you should use
 username: 'premium-jim'
 password: 'GBLtTyq3E_UNjFnpo9m6'
 ```
-
-## Token payload
-
-Decoding the auth token will give you access to basic information about the
-user including its role.
-
-```
-{
-  "userId": 123,
-  "name": "Basic Thomas",
-  "role": "basic",
-  "iat": 1606221838,
-  "exp": 1606223638,
-  "iss": "https://www.netguru.com/",
-  "sub": "123"
-}
-```
-
 ## Example request
 
 To authorize user call the auth service using for example `curl`. We assume
-that the auth service is running of the default port `3000`.
+that the auth service is running on port `3000`.
 
 Request
 
 ```
-curl --location --request POST '0.0.0.0:3080/auth' \
+curl --location --request POST '0.0.0.0:3000/auth' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "username": "basic-thomas",
@@ -177,10 +126,27 @@ Response
 
 ```
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMywibmFtZSI6IkJhc2ljIFRob21hcyIsInJvbGUiOiJiYXNpYyIsImlhdCI6MTYwNjIyMTgzOCwiZXhwIjoxNjA2MjIzNjM4LCJpc3MiOiJodHRwczovL3d3dy5uZXRndXJ1LmNvbS8iLCJzdWIiOiIxMjMifQ.KjZ3zZM1lZa1SB8U-W65oQApSiC70ePdkQ7LbAhpUQg"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMywibmFtZSI6IkJhc2ljIFRob21hcyIsInJvbGUiOiJiYXNpYyIsImlhdCI6MTYxODIxODU1NiwiZXhwIjoxNjE4MjIwMzU2LCJpc3MiOiJodHRwczovL3d3dy5uZXRndXJ1LmNvbS8iLCJzdWIiOiIxMjMifQ.aHn18NijgXhvEqYxHXmvnqj2ONNB82KWcCGK_IX2Mqw"
 }
 ```
+## Run 
+To build and run locally you need to have `docker` and `docker-compose` installed
 
+
+# Test locally 
+1. Clone this repository 
+2. Run from root dir
+
+```
+docker-compose -f docker-compose-test.yml up -d stage_database
+docker-compose -f docker-compose-test.yml build --no-cache api
+```
+That way, a stage database having the same schema with the production database is set
+At the build stage, unit tests as well as integration tests are executed
+Code coverage is 98.99% 
+
+![tests](https://github.com/pkavvadias/Movies-API-netguru/blob/master/assets/test_results.PNG)
+![code coverage](https://github.com/pkavvadias/Movies-API-netguru/blob/master/assets/code_coverage.PNG)
 ## Rules
 
 - Database and framework choice are on your side.
